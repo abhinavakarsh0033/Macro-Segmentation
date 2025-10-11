@@ -18,7 +18,7 @@ class LayoutNode(ABC):
         self.y = y
         self.width = width
         self.height = height
-        self.depth: int = 1
+        self.depth: int = 0
         self._image_count = 0
         self._text_count = 0
 
@@ -70,14 +70,34 @@ class ContainerNode(LayoutNode):
         return sum(child.text_count for child in self.children)
 
     def update_depth(self, depth: int) -> None:
-        if self.depth == depth:
-            return
+        # if self.depth == depth:
+        #     return
         
         self.depth = depth
-        for child in self.children:
-            # Increase depth of child if it is a container, else keep the same depth
-            new_depth = depth + 1 if isinstance(child, ContainerNode) else depth
-            child.update_depth(new_depth)
+        # for child in self.children:
+        #     # Increase depth of child if it is a container, else keep the same depth
+        #     new_depth = depth + 1 if isinstance(child, ContainerNode) else depth
+        #     child.update_depth(new_depth)
+
+        if len(self.children) == 1 and isinstance(self.children[0], ContainerNode):
+            # if only one child and it is a container, then keep the same depth
+            self.children[0].update_depth(depth)
+
+        else:
+            for child in self.children:
+                d = depth + 1
+                # for image check if some text is on top of it
+                if isinstance(child, ImageNode):
+                    for other in self.children:
+                        if isinstance(other, TextNode):
+                            if (other.x < child.x + child.width and
+                                other.x + other.width > child.x and
+                                other.y < child.y + child.height and
+                                other.y + other.height > child.y):
+                                # text overlaps with image, increase depth of image
+                                d = d + 1
+                                break
+                child.update_depth(d)
 
     def _can_fit(self, child: LayoutNode) -> bool:
         return (self.x <= child.x and child.x + child.width <= self.x + self.width and
@@ -89,9 +109,10 @@ class ContainerNode(LayoutNode):
             raise ValueError(f"{child} does not fit in {self}")
 
         # increase depth of child recursively
-        new_depth = self.depth + 1 if isinstance(child, ContainerNode) else self.depth
-        child.update_depth(new_depth)
+        # new_depth = self.depth + 1 if isinstance(child, ContainerNode) else self.depth
+        # child.update_depth(new_depth)
         self.children.append(child)
+        self.update_depth(self.depth)
 
     def __str__(self):
         return f"Container (x={self.x}, y={self.y}, {self.width}x{self.height}, depth={self.depth})" + "\n[\n" + "\n".join(str(child) for child in self.children) + "\n]"

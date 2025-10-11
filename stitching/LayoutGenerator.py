@@ -126,7 +126,7 @@ class GridLayoutGenerator(LayoutGenerator):
 
         th, tw, tx, ty = 0, 0, 0, 0
         if self.with_title:
-            th = random.randint(container_height // 10, container_height // max(4, num_images+1))
+            th = random.randint(container_height // (3*(self.rows+1)), container_height // (self.rows+1))
             tw = container_width
             tx = 0
             ty = 0
@@ -165,5 +165,63 @@ class GridLayoutGenerator(LayoutGenerator):
                     text_node = TextNode(x, y, w, h, random_text())
                     container.add_child(text_node)
                     num_texts -= 1
+
+        return container
+    
+class TextOnImageLayoutGenerator(LayoutGenerator):
+    def __init__(self, rows:int, cols:int, spacing:int=0, with_title:bool=False):
+        self.rows = rows
+        self.cols = cols
+        self.spacing = spacing
+        self.with_title = with_title
+
+    def generate(self, container_width: int, container_height: int, num_images: int, num_texts: int, paths: list) -> LayoutNode:
+        if num_images < self.rows * self.cols:
+            raise ValueError("Less images provided")
+
+        container = ContainerNode(0, 0, container_width, container_height)
+        img_cnt = 0
+
+        if num_texts > num_images:
+            num_texts = num_images
+
+        th, tw, tx, ty = 0, 0, 0, 0
+        if self.with_title:
+            th = random.randint(container_height // (3*(self.rows+1)), container_height // (self.rows+1))
+            tw = container_width
+            tx = 0
+            ty = 0
+            container.add_child(TextNode(tx, ty, tw, th, random_text()))
+
+        # Create a grid layout
+        cell_width = container_width // self.cols
+        cell_height = (container_height - th) // self.rows
+
+        for row in range(self.rows):
+            for col in range(self.cols):
+                x = col * cell_width + self.spacing // 2
+                y = row * cell_height + self.spacing // 2 + th
+                w = cell_width - self.spacing
+                h = cell_height - self.spacing
+
+                image_node = ImageNode(x, y, w, h, paths[img_cnt])
+
+                # Place text on image
+                if random.choices([True, False], weights=[num_texts, num_images])[0]:
+                    txth = random.randint(h // 4, h // 2)
+                    txtw = random.randint(w // 3, w)
+                    txtx = random.randint(x, x + w - txtw)
+                    txty = random.randint(y, y + h - txth)
+                    text_node = TextNode(txtx, txty, txtw, txth, random_text())
+                    sub_container = ContainerNode(x, y, w, h)
+                    sub_container.add_child(image_node)
+                    sub_container.add_child(text_node)
+                    num_texts -= 1
+                else:
+                    sub_container = image_node
+
+                container.add_child(sub_container)
+                img_cnt += 1
+                num_images -= 1
 
         return container

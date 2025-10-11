@@ -1,5 +1,5 @@
 from LayoutNode import LayoutNode, ContainerNode, ImageNode, TextNode
-from LayoutGenerator import LayoutGenerator, SingleImageLayoutGenerator, GridLayoutGenerator, random_text
+from LayoutGenerator import LayoutGenerator, SingleImageLayoutGenerator, GridLayoutGenerator, TextOnImageLayoutGenerator, random_text
 # from visualize import visualize_layout
 from DataLoader import CustomDataset
 import os
@@ -39,12 +39,13 @@ def sample_layout():
     layout = ContainerNode(0, 0, 800, 600)
     lgen = GridLayoutGenerator(1, 2, spacing=10, with_title=True)
     image_node = lgen.generate(800, 600, 2, 0, dataset.get_images(2))
-    text_node = TextNode(100, 200, 500, 300, random_text(12,15))
+    text_node = TextNode(100, 200, 200, 300, random_text(2,5))
     layout.add_child(text_node)
     layout.add_child(image_node)
     os.makedirs("jsons", exist_ok=True)
     with open("jsons/sample_layout.json", "w") as f:
         json.dump(layout.get_label(), f, indent=2)
+    os.makedirs("images", exist_ok=True)
     layout.save_image("images/sample_layout.png")
 
 # Single Image Layouts
@@ -61,6 +62,7 @@ def test_single_image_layouts():
 # Grid Layouts
 def test_grid_layouts():
     os.makedirs("jsons", exist_ok=True)
+    os.makedirs("images", exist_ok=True)
     for i in range(1, 4):
         for j in range(1, 4):
             width = 800
@@ -122,6 +124,45 @@ def test_grid_layouts():
         json.dump(layout.get_label(), open(f"jsons/order_layout_{i}_4.json", "w"), indent=2)
         layout.save_image(f"images/order_layout_{i}_4.png")
 
+def test_text_on_image_layouts():
+    os.makedirs("jsons", exist_ok=True)
+    os.makedirs("images", exist_ok=True)
+    for i in range(1, 6):
+        for j in range(1, 2 if i>3 else 4):
+            width = 800
+            height = 600
+            if i > 3:
+                height = 800 + (i-3)*300
+            layout_generator = TextOnImageLayoutGenerator(i, j)
+            num_images = i*j
+            num_texts = random.randint(0, num_images)
+            layout = layout_generator.generate(width, height, num_images, num_texts, dataset.get_images(num_images))
+            json.dump(layout.get_label(), open(f"jsons/text_on_image_layout_{i}x{j}_1.json", "w"), indent=2)
+            layout.save_image(f"images/text_on_image_layout_{i}x{j}_1.png")
+
+            space = random.randint(5, 20)
+            layout_generator = TextOnImageLayoutGenerator(i, j, spacing=space)
+            num_images = i*j
+            num_texts = random.randint(0, num_images)
+            layout = layout_generator.generate(width, height, num_images, num_texts, dataset.get_images(num_images))
+            json.dump(layout.get_label(), open(f"jsons/text_on_image_layout_{i}x{j}_2.json", "w"), indent=2)
+            layout.save_image(f"images/text_on_image_layout_{i}x{j}_2.png")
+
+            layout_generator = TextOnImageLayoutGenerator(i, j, with_title=True)
+            num_images = i*j
+            num_texts = random.randint(0, num_images)
+            layout = layout_generator.generate(width, height, num_images, num_texts, dataset.get_images(num_images))
+            json.dump(layout.get_label(), open(f"jsons/text_on_image_layout_{i}x{j}_3.json", "w"), indent=2)
+            layout.save_image(f"images/text_on_image_layout_{i}x{j}_3.png")
+
+            space = random.randint(5, 20)
+            layout_generator = TextOnImageLayoutGenerator(i, j, spacing=space, with_title=True)
+            num_images = i*j
+            num_texts = random.randint(0, num_images)
+            layout = layout_generator.generate(width, height, num_images, num_texts, dataset.get_images(num_images))
+            json.dump(layout.get_label(), open(f"jsons/text_on_image_layout_{i}x{j}_4.json", "w"), indent=2)
+            layout.save_image(f"images/text_on_image_layout_{i}x{j}_4.png")
+
 # visualize
 def draw_layouts():
     os.makedirs("images", exist_ok=True)
@@ -132,7 +173,8 @@ def draw_layouts():
 
 dataset = CustomDataset(".")
 sample_layout()
-# test_layout_node()
-# test_single_image_layouts()
-# test_grid_layouts()
+test_layout_node()
+test_single_image_layouts()
+test_grid_layouts()
+test_text_on_image_layouts()
 # draw_layouts()
