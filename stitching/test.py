@@ -1,6 +1,6 @@
 from LayoutNode import LayoutNode, ContainerNode, ImageNode, TextNode
 from LayoutGenerator import LayoutGenerator, SingleImageLayoutGenerator, GridLayoutGenerator, random_text
-from visualize import visualize_layout
+# from visualize import visualize_layout
 from DataLoader import CustomDataset
 import os
 import json
