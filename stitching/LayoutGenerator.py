@@ -225,3 +225,107 @@ class TextOnImageLayoutGenerator(LayoutGenerator):
                 num_images -= 1
 
         return container
+    
+class AsymmetricalColLayoutGenerator(LayoutGenerator):
+    def __init__(self, rowlist: list[int], spacing:int=0, text_on_image:bool=False):
+        self.rowlist = rowlist
+        self.cols = len(rowlist)
+        self.spacing = spacing
+        self.text_on_image = text_on_image
+
+    def generate(self, container_width: int, container_height: int, num_images: int, num_texts: int, paths: list) -> LayoutNode:
+        if num_images == 0:
+            raise ValueError("No images provided")
+
+        container = ContainerNode(0, 0, container_width, container_height)
+        img_cnt = 0
+
+        cell_width = container_width // self.cols
+
+        for col in range(self.cols):
+            rows = self.rowlist[col]
+            cell_height = container_height // rows
+
+            for row in range(rows):
+                x = col * cell_width + self.spacing // 2
+                y = row * cell_height + self.spacing // 2
+                w = cell_width - self.spacing
+                h = cell_height - self.spacing
+
+                if random.choices([True, False], weights=[num_texts, num_images])[0]:
+                    if self.text_on_image:
+                        image_node = ImageNode(x, y, w, h, paths[img_cnt])
+                        img_cnt += 1
+                        num_images -= 1
+                        txth = random.randint(h // 4, h // 2)
+                        txtw = random.randint(w // 3, w)
+                        txtx = random.randint(x, x + w - txtw)
+                        txty = random.randint(y, y + h - txth)
+                        text_node = TextNode(txtx, txty, txtw, txth, random_text())
+                        sub_container = ContainerNode(x, y, w, h)
+                        sub_container.add_child(image_node)
+                        sub_container.add_child(text_node)
+                        container.add_child(sub_container)
+                    else:
+                        text_node = TextNode(x, y, w, h, random_text())
+                        container.add_child(text_node)
+                    num_texts -= 1
+                else:
+                    image_node = ImageNode(x, y, w, h, paths[img_cnt])
+                    container.add_child(image_node)
+                    img_cnt += 1
+                    num_images -= 1
+
+        return container
+    
+class AsymmetricalRowLayoutGenerator(LayoutGenerator):
+    def __init__(self, collist: list[int], spacing:int=0, text_on_image:bool=False):
+        self.collist = collist
+        self.rows = len(collist)
+        self.spacing = spacing
+        self.text_on_image = text_on_image
+
+    def generate(self, container_width: int, container_height: int, num_images: int, num_texts: int, paths: list) -> LayoutNode:
+        if num_images == 0:
+            raise ValueError("No images provided")
+
+        container = ContainerNode(0, 0, container_width, container_height)
+        img_cnt = 0
+
+        cell_height = container_height // self.rows
+
+        for row in range(self.rows):
+            cols = self.collist[row]
+            cell_width = container_width // cols
+
+            for col in range(cols):
+                x = col * cell_width + self.spacing // 2
+                y = row * cell_height + self.spacing // 2
+                w = cell_width - self.spacing
+                h = cell_height - self.spacing
+
+                if random.choices([True, False], weights=[num_texts, num_images])[0]:
+                    if self.text_on_image:
+                        image_node = ImageNode(x, y, w, h, paths[img_cnt])
+                        img_cnt += 1
+                        num_images -= 1
+                        txth = random.randint(h // 4, h // 2)
+                        txtw = random.randint(w // 3, w)
+                        txtx = random.randint(x, x + w - txtw)
+                        txty = random.randint(y, y + h - txth)
+                        text_node = TextNode(txtx, txty, txtw, txth, random_text())
+                        sub_container = ContainerNode(x, y, w, h)
+                        sub_container.add_child(image_node)
+                        sub_container.add_child(text_node)
+                        container.add_child(sub_container)
+                    else:
+                        text_node = TextNode(x, y, w, h, random_text())
+                        container.add_child(text_node)
+                    num_texts -= 1
+                else:
+                    image_node = ImageNode(x, y, w, h, paths[img_cnt])
+                    container.add_child(image_node)
+                    img_cnt += 1
+                    num_images -= 1
+
+        return container
