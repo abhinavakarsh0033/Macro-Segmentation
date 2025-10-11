@@ -133,7 +133,7 @@ class ContainerNode(LayoutNode):
             facecolor="none"
         )
 
-        if self.depth == 1:
+        if self.depth == 0:
             rect.set_linewidth(2.5)
             rect.set_edgecolor("black")
 
