@@ -264,7 +264,7 @@ def draw_layouts():
             visualize_layout(os.path.join("jsons", json_file), f"images/{id}_{json_file.replace('.json', '.png')}")
             print(json_file)
 
-dataset = CustomDataset(".")
+dataset = CustomDataset("../dataset")
 os.makedirs("images", exist_ok=True)
 os.makedirs("jsons", exist_ok=True)
 sample_layout()
@@ -276,4 +276,4 @@ for _ in range(num_iter):
     test_grid_layouts()
     test_text_on_image_layouts()
     test_asymmetrical_layouts()
-# draw_layouts()
+draw_layouts()
