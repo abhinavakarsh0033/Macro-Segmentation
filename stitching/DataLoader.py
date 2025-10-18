@@ -11,19 +11,19 @@ class CustomDataset(Dataset):
         self.dataset = load_dataset(dataset_name, split="test")
 
         # Download and extract zip files from the dataset repository
-        # repo_files = list_repo_files(dataset_name, repo_type="dataset")
-        # zip_files = [f for f in repo_files if f.endswith('.zip')]
-        # print(zip_files)
-        # for z in zip_files:
-        #     z1 = hf_hub_download(repo_id=dataset_name, filename=z, repo_type="dataset")
-        #     extract_dir = z.replace('.zip', '')
-        #     extract_dir = os.path.join(self.image_dir, extract_dir)
-        #     if not os.path.exists(extract_dir): # Avoid re-extracting
-        #         os.makedirs(extract_dir)
-        #         with zipfile.ZipFile(z1, 'r') as zip_ref:
-        #             zip_ref.extractall(extract_dir)
-        #     else:
-        #         print(f"Directory {extract_dir} already exists, skipping extraction. If it doesn't contain the required data, please delete this directory and rerun.")
+        repo_files = list_repo_files(dataset_name, repo_type="dataset")
+        zip_files = [f for f in repo_files if f.endswith('.zip')]
+        print(zip_files)
+        for z in zip_files:
+            z1 = hf_hub_download(repo_id=dataset_name, filename=z, repo_type="dataset")
+            extract_dir = z.replace('.zip', '')
+            extract_dir = os.path.join(self.image_dir, extract_dir)
+            if not os.path.exists(extract_dir): # Avoid re-extracting
+                os.makedirs(extract_dir)
+                with zipfile.ZipFile(z1, 'r') as zip_ref:
+                    zip_ref.extractall(extract_dir)
+            else:
+                print(f"Directory {extract_dir} already exists, skipping extraction. If it doesn't contain the required data, please delete this directory and rerun.")
 
         self.idx = 0
 
