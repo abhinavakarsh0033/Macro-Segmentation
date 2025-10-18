@@ -1,0 +1,90 @@
+Image: 100_text_on_image_layout_3x3_1.png
+  Text: child many networt second Qaper, Bounding Box: [[175, 259], [231, 259], [231, 307], [175, 307]]
+  Text: avail able set, Bounding Box: [[384, 266], [434, 266], [434, 338], [384, 338]]
+  Text: create church, Bounding Box: [[578, 386], [664, 386], [664, 442], [578, 442]]
+
+Image: 101_text_on_image_layout_3x3_2.png
+  Text: Elmd3, Bounding Box: [[613, 99], [655, 99], [655, 113], [613, 113]]
+  Text: couple response, Bounding Box: [[164, 110], [264, 110], [264, 162], [164, 162]]
+  Text: spac e nO, Bounding Box: [[607, 147], [685, 147], [685, 214], [607, 214]]
+  Text: provide Ouver, Bounding Box: [[382, 266], [446, 266], [446, 307], [382, 307]]
+  Text: sheme Qtion, Bounding Box: [[148, 472], [236, 472], [236, 526], [148, 526]]
+
+Image: 102_text_on_image_layout_3x3_3.png
+  Text: sogumigl, Bounding Box: [[339, 89], [479, 89], [479, 133], [339, 133]]
+  Text: north war, Bounding Box: [[195, 359], [243, 359], [243, 399], [195, 399]]
+
+Image: 103_text_on_image_layout_3x3_4.png
+  Text: meantue, Bounding Box: [[335, 101], [487, 101], [487, 139], [335, 139]]
+  Text: FHR 6|, Bounding Box: [[116, 176], [251, 176], [251, 255], [116, 255]]
+  Text: STP, Bounding Box: [[451, 211], [485, 211], [485, 227], [451, 227]]
+  Text: StTup, Bounding Box: [[649, 205], [689, 205], [689, 225], [649, 225]]
+  Text: STOP, Bounding Box: [[350, 234], [400, 234], [400, 260], [350, 260]]
+  Text: Ba, Bounding Box: [[461, 253], [493, 253], [493, 269], [461, 269]]
+  Text: STOP, Bounding Box: [[541, 239], [599, 239], [599, 275], [541, 275]]
+  Text: TIP, Bounding Box: [[654, 244], [692, 244], [692, 272], [654, 272]]
+  Text: STOP, Bounding Box: [[230, 326], [290, 326], [290, 356], [230, 356]]
+  Text: Slop, Bounding Box: [[234, 374], [286, 374], [286, 400], [234, 400]]
+
+Image: 104_text_on_image_layout_4x1_1.png
+  Text: thing central quicklymarket authority, Bounding Box: [[220, 241], [626, 241], [626, 323], [220, 323]]
+  Text: protectallowtrouble continue class, Bounding Box: [[365, 442], [667, 442], [667, 519], [365, 519]]
+  Text: something sea, Bounding Box: [[310, 695], [527, 695], [527, 737], [310, 737]]
+  Text: program world, Bounding Box: [[118, 801], [333, 801], [333, 844], [118, 844]]
+
+Image: 105_text_on_image_layout_4x1_2.png
+  Text: Iess strong, Bounding Box: [[347, 187], [511, 187], [511, 227], [347, 227]]
+  Text: createwoder, Bounding Box: [[264, 855], [473, 855], [473, 895], [264, 895]]
+
+Image: 106_text_on_image_layout_4x1_3.png
+  Text: Middogwardsiceactualypressure, Bounding Box: [[153, 185], [665, 185], [665, 229], [153, 229]]
+  Text: drug pressure, Bounding Box: [[269, 873], [476, 873], [476, 915], [269, 915]]
+
+Image: 107_text_on_image_layout_4x1_4.png
+  Text: [ocontaiartstwateveralost, Bounding Box: [[160, 170], [659, 170], [659, 213], [160, 213]]
+  Text: smile floor, Bounding Box: [[351, 377], [511, 377], [511, 417], [351, 417]]
+  Text: authority newspaper imagine white clearly, Bounding Box: [[332, 490], [591, 490], [591, 556], [332, 556]]
+
+Image: 108_text_on_image_layout_5x1_1.png
+  Text: createschoolplacegilwide, Bounding Box: [[164, 278], [576, 278], [576, 326], [164, 326]]
+  Text: Ei, Bounding Box: [[574, 978], [628, 978], [628, 1004], [574, 1004]]
+
+Image: 109_text_on_image_layout_5x1_2.png
+  Text: fast treat, Bounding Box: [[480, 639], [621, 639], [621, 681], [480, 681]]
+  Text: class individual, Bounding Box: [[245, 829], [397, 829], [397, 901], [245, 901]]
+
+Image: 10_single_layout_8.png
+  Text: much, Bounding Box: [[286, 90], [362, 90], [362, 122], [286, 122]]
+  Text: administration both support have, Bounding Box: [[229, 117], [419, 117], [419, 214], [229, 214]]
+  Text: datapractice, Bounding Box: [[359, 245], [555, 245], [555, 289], [359, 289]]
+  Text: through drug class describe himself, Bounding Box: [[395, 398], [609, 398], [609, 507], [395, 507]]
+
+Image: 110_text_on_image_layout_5x1_3.png
+  Text: odpusb, Bounding Box: [[346, 217], [470, 217], [470, 261], [346, 261]]
+  Text: wnd want eat recengDall], Bounding Box: [[223, 811], [581, 811], [581, 851], [223, 851]]
+
+Image: 111_text_on_image_layout_5x1_4.png
+  Text: planwdegeeabouwigelear, Bounding Box: [[187, 199], [633, 199], [633, 243], [187, 243]]
+  Text: view look possibleauthority suddenly , Bounding Box: [[255, 384], [573, 384], [573, 447], [255, 447]]
+  Text: [isten thousand, Bounding Box: [[239, 718], [466, 718], [466, 761], [239, 761]]
+  Text: @istyes parentguess protect Dpez), Bounding Box: [[193, 897], [616, 897], [616, 1019], [193, 1019]]
+
+Image: 112_assym_row_layout_1_1.png
+
+Image: 113_assym_row_layout_1_2.png
+
+Image: 114_assym_row_layout_1_3.png
+
+Image: 115_assym_row_layout_1_4.png
+
+Image: 116_assym_row_layout_2_1.png
+  Text: Seecouse cou@lest tetthe summercel @lce @alz, Bounding Box: [[327, 131], [707, 131], [707, 243], [327, 243]]
+
+Image: 117_assym_row_layout_2_2.png
+  Text: soged, Bounding Box: [[155, 167], [255, 167], [255, 209], [155, 209]]
+  Text: Qavsocilincrease @earsoldier, Bounding Box: [[425, 376], [702, 376], [702, 455], [425, 455]]
+
+Image: 118_assym_row_layout_2_3.png
+  Text: attorney different, Bounding Box: [[448, 384], [552, 384], [552, 440], [448, 440]]
+  Text: Ok million, Bounding Box: [[189, 453], [335, 453], [335, 489], [189, 489]]
+
