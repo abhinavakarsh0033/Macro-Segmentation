@@ -15,6 +15,9 @@ class CustomDataset(Dataset):
         zip_files = [f for f in repo_files if f.endswith('.zip')]
         print(zip_files)
         for z in zip_files:
+            if os.path.exists(os.path.join(self.image_dir, z.replace('.zip', ''))):
+                print(f"Zip file {z} already extracted, skipping download and extraction.")
+                continue
             z1 = hf_hub_download(repo_id=dataset_name, filename=z, repo_type="dataset")
             extract_dir = z.replace('.zip', '')
             extract_dir = os.path.join(self.image_dir, extract_dir)

@@ -31,7 +31,7 @@ def test_layout_node():
     collage.add_child(image3)
     node.add_child(collage)
     node.add_child(text2)
-    with open(f"jsons/{id}_test_layout.json", "w") as f:
+    with open(f"jsons/{id}_test_draw.json", "w") as f:
         json.dump(node.get_label(), f, indent=2)
     node.save_image(f"images/{id}_test_draw.png")
     id += 1
@@ -270,10 +270,13 @@ os.makedirs("jsons", exist_ok=True)
 sample_layout()
 test_layout_node()
 
-num_iter = 1
+num_iter = 5000
 for _ in range(num_iter):
     test_single_image_layouts()
     test_grid_layouts()
     test_text_on_image_layouts()
     test_asymmetrical_layouts()
-draw_layouts()
+    print(f"{(_+1)*100/num_iter:<.2f}% done")
+# draw_layouts()
+
+print(f"{id-1} images and JSONs generated.")

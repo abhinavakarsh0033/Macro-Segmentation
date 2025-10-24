@@ -8,8 +8,10 @@ fake = faker.Faker()
 # TODO: Check if paths has atleast num_images elements
 
 def random_text(min_words=2, max_words=5) -> str:
-    words = fake.words(nb=random.choice([min_words, max_words]))
-    return " ".join(words)
+    cnt = random.randint(min_words, max_words)
+    words = fake.words(nb=cnt)
+    words = " ".join(words)
+    return words
 
 class LayoutGenerator(ABC):
     @abstractmethod

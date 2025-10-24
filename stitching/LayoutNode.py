@@ -153,7 +153,7 @@ class ContainerNode(LayoutNode):
         ax.axis("off")
 
         self._draw_node(ax)
-        plt.savefig(path)
+        plt.savefig(path, bbox_inches='tight', pad_inches=0)
         plt.close()
     
 class ImageNode(LayoutNode):
