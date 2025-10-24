@@ -13,3 +13,7 @@ stitching/jsons/
 # Dataset files
 dataset/
 yolo_dataset/
+
+# Models
+*.pt
+/segmentation/runs/
